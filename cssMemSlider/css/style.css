@@ -1,0 +1,232 @@
+:root {
+    --width: 50vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input {
+    display: none;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25282a;
+    font-family: 'Arial', sans-serif;
+}
+
+.slider-wrapper {
+    display: grid;
+    grid-template-columns: calc(80% - 1rem) 20%;
+    grid-template-rows: auto 10vh;
+    row-gap: 0.5rem;
+    column-gap: 1rem;
+    margin: 0 auto;
+    width: var(--width);
+    max-width: 100rem;
+    overflow: hidden;
+}
+
+.slides {
+    grid-row: 1 / 2;
+    display: flex;
+    width: calc(var(--width) * 4);
+    height: 50vh;
+}
+
+.radio-controls {
+    display: flex;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    justify-content: flex-end;
+    align-self: center;
+    width: 100%;
+    z-index: 2;
+    background-color: #25282a;
+}
+
+.slide {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    background-color: #202224;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.slide-1 {
+    background-image: url(../img/1.jpg);
+}
+
+.slide-2 {
+    background-image: url(../img/2.jpg);
+}
+
+.slide-3 {
+    background-image: url(../img/3.jpg);
+}
+
+.slide-4 {
+    background-image: url(../img/4.jpg);
+}
+
+#r1:checked ~ .slides {
+    transform: translateX(0);
+    transition: transform 0.8s ease-in-out;
+}
+
+#r2:checked ~ .slides {
+    transform: translateX(-25%);
+    transition: transform 0.8s ease-in-out;
+}
+
+#r3:checked ~ .slides {
+    transform: translateX(-50%);
+    transition: transform 0.8s ease-in-out;
+}
+
+#r4:checked ~ .slides {
+    transform: translateX(-75%);
+    transition: transform 0.8s ease-in-out;
+}
+
+.description {
+    display: flex;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    align-self: center;
+    width: calc(var(--width) * 4);
+    color: #ffffff;
+    transform: translateX(calc(var(--width) * -4));
+    transition: transform 0.8s ease-in-out;
+}
+
+.description .text {
+    width: 100%;
+    font-size: 1rem;
+    transition: transform 0.4s ease-in-out;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.label:last-child {
+    padding: 1rem 0 1rem 1rem;
+}
+
+.label:hover .round-dot {
+    background-color: #ffffff;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.round-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #749cec;
+    transition: background-color 0.5s ease-in-out;
+}
+
+#r1:checked ~ .radio-controls > .label-1 > .round-dot {
+    background-color: transparent;
+    border: 2px solid #749cec;
+    transition: border 0.5s ease-in-out;
+}
+
+#r1:checked ~ .radio-controls > .label-1:hover .round-dot {
+    border-color: #ffffff;
+    transition: border 0.5s ease-in-out;
+}
+
+#r2:checked ~ .radio-controls > .label-2 > .round-dot {
+    background-color: transparent;
+    border: 2px solid #749cec;
+    transition: border 0.5s ease-in-out;
+}
+
+#r2:checked ~ .radio-controls > .label-2:hover .round-dot {
+    border-color: #ffffff;
+    transition: border 0.5s ease-in-out;
+}
+
+#r3:checked ~ .radio-controls > .label-3 > .round-dot {
+    background-color: transparent;
+    border: 2px solid #749cec;
+    transition: border 0.5s ease-in-out;
+}
+
+#r3:checked ~ .radio-controls > .label-3:hover .round-dot {
+    border-color: #ffffff;
+    transition: border 0.5s ease-in-out;
+}
+
+#r4:checked ~ .radio-controls > .label-4 > span {
+    background-color: transparent;
+    border: 2px solid #749cec;
+    transition: border 0.5s ease-in-out;
+}
+
+#r4:checked ~ .radio-controls > .label-4:hover span {
+    border-color: #ffffff;
+    transition: border 0.5s ease-in-out;
+}
+
+#r1:checked ~ .description {
+    transform: translateX(0);
+    transition: transform 0.4s ease-in-out;
+}
+
+#r2:checked ~ .description {
+    transform: translateX(-25%);
+    transition: transform 0.4s ease-in-out;
+}
+
+#r3:checked ~ .description {
+    transform: translateX(-50%);
+    transition: transform 0.4s ease-in-out;
+}
+
+#r4:checked ~ .description {
+    transform: translateX(-75%);
+    transition: transform 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --width: 90vw;
+    }
+
+    .slider-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .radio-controls {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .description {
+        order: 1;
+        align-self: flex-start;
+    }
+}
